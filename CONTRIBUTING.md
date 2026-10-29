@@ -29,4 +29,6 @@ claude plugin validate .     # check the plugin and marketplace files
 - **Scripts stay zero-dependency and deterministic**, and every behavior change comes with a test.
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/), for example `fix(reddit): update the r/webdev showcase rule`.
 
-Issues and pull requests are welcome in English, Arabic or French. By contributing you agree that your work is released under the [MIT License](LICENSE). Please follow the [Miraya code of conduct](https://github.com/miraya-dev/.github/blob/main/CODE_OF_CONDUCT.md), and report security problems privately as described in [SECURITY](https://github.com/miraya-dev/.github/blob/main/SECURITY.md).
+Issues and pull requests are welcome in English, Arabic or French. By contributing you agree that your work is released under the [MIT License](LICENSE).
+
+Be kind and constructive; we follow the spirit of the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). If you find a security problem, don't post the details in a public issue: open an issue asking for a private channel and we'll reply there.
