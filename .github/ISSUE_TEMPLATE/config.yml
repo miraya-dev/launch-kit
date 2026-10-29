@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: See a real launch pack
+    url: https://github.com/miraya-dev/launch-kit/tree/main/examples/launch-kit
+    about: The pack launch-kit wrote for its own launch, unedited.

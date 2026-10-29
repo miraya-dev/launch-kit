@@ -1,0 +1,39 @@
+name: Bug report
+description: Something in the skill or the scripts doesn't work as documented.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please don't paste private code or secrets; a small public repo that shows the problem is ideal.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you run or ask, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install with /plugin install launch-kit@launch-kit
+        2. In the repo, ask "Prepare a launch pack for this repo."
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: facts
+    attributes:
+      label: Output of repo-facts (if relevant)
+      description: "Run `node skills/launch-kit/scripts/repo-facts.mjs <repo> --format md` and paste the result."
+      render: markdown
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: launch-kit version, Claude Code version, Node.js version and OS.
+      placeholder: "launch-kit 0.1.0, Claude Code 2.1.x, Node 22, Windows 11"
+    validations:
+      required: true

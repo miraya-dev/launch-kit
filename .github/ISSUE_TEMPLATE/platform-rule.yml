@@ -1,0 +1,41 @@
+name: Outdated platform rule or limit
+description: A community's rules, a character limit or an image size in the references is wrong or out of date.
+labels: ["documentation"]
+body:
+  - type: dropdown
+    id: channel
+    attributes:
+      label: Channel
+      options:
+        - Hacker News
+        - Reddit
+        - Product Hunt
+        - X / Bluesky / Mastodon
+        - LinkedIn
+        - dev.to / Hashnode
+        - GitHub
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What changed?
+      description: What the reference says today, and what it should say.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source
+      description: A link to the platform's own page (rules, help center or submission form). Third-party blogs aren't enough.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: checked
+    attributes:
+      label: Date checked
+      placeholder: "2026-11-02"
+    validations:
+      required: true

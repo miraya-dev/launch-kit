@@ -5,6 +5,7 @@
 launch-kit is a [Claude Code](https://code.claude.com) skill that reads your repository and writes a launch pack to `launch/`: positioning, GitHub polish with concrete README edits, ready-to-edit drafts for Show HN, Reddit, Product Hunt, X, LinkedIn and dev.to, and a 14-day launch calendar. Everything stays on your machine as markdown. You review it, rewrite it in your own words and post it yourself.
 
 [![test](https://github.com/miraya-dev/launch-kit/actions/workflows/test.yml/badge.svg)](https://github.com/miraya-dev/launch-kit/actions/workflows/test.yml)
+[![release](https://img.shields.io/github/v/release/miraya-dev/launch-kit)](https://github.com/miraya-dev/launch-kit/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757)](#install)
 
@@ -158,6 +159,23 @@ These rules are written into [`SKILL.md`](skills/launch-kit/SKILL.md) as hard ru
 
 The skill never posts, votes, comments or signs up anywhere.
 
+## FAQ
+
+**Does it post anything for me?**
+No. It writes markdown files in `launch/` and never posts, votes, comments or signs up anywhere. You rewrite the drafts and post them yourself.
+
+**Can I see what it does without Claude Code?**
+Yes. [`examples/launch-kit/`](examples/launch-kit/) is the pack it wrote for its own launch. The two scripts also run on their own with Node.js 18+: `node skills/launch-kit/scripts/repo-facts.mjs path/to/repo --format md` prints a launch-readiness checklist for any repo. The drafts themselves need Claude Code.
+
+**Do the scripts send my code anywhere?**
+No. `repo-facts.mjs` and `check-limits.mjs` only read local files: no network, no dependencies, and `repo-facts.mjs` never runs git. Claude reads your files the way it does in any Claude Code session.
+
+**Which languages and ecosystems does it understand?**
+Claude reads code in any language. `repo-facts.mjs` also reads the manifests of 13 ecosystems (npm, PyPI, crates.io, Go modules, Packagist, pub.dev, JSR, RubyGems, Maven, Gradle, NuGet, Swift Package Manager, Hex) and detects 10 CI providers.
+
+**Why does the Hacker News file have notes instead of a post?**
+Hacker News asks for no generated text in posts or comments, so the pack gives you facts and likely questions, and you write the words.
+
 ## Limitations
 
 - **You still do the launch.** The pack saves hours of preparation, but you rewrite, post, and stay to answer comments.
@@ -169,7 +187,7 @@ The skill never posts, votes, comments or signs up anywhere.
 
 ## Contributing
 
-Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Run the tests with `npm test` (Node.js 18+, no dependencies).
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [code of conduct](CODE_OF_CONDUCT.md). Run the tests with `npm test` (Node.js 18+, no dependencies). Changes are listed in the [CHANGELOG](CHANGELOG.md).
 
 ## License
 

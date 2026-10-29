@@ -20,6 +20,6 @@ Real launch packs written by launch-kit, unedited.
 - links in CONTRIBUTING to organization files that don't exist yet;
 - the social preview footer sitting inside the 80 px margin that some platforms crop.
 
-The rest (a demo GIF, a v0.1.0 release, a CHANGELOG, a FAQ, issue templates, the good first issues) is left for launch week, as its calendar plans. The session ran without GitHub access (no `gh`), which is why the pack says it couldn't check the live repository settings.
+Shortly after, the v0.1.0 release, a CHANGELOG, a FAQ, a code of conduct, a security policy and issue and pull request templates were added. The demo GIF and the good first issues are left for launch week, as its calendar plans. The session ran without GitHub access (no `gh`), which is why the pack says it couldn't check the live repository settings.
 
 Run it on your own repo: see [Quick start](../README.md#quick-start).
