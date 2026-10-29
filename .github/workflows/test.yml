@@ -1,0 +1,26 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test
+      - name: Scripts work on this repository
+        run: |
+          node skills/launch-kit/scripts/repo-facts.mjs . --format md
+          node skills/launch-kit/scripts/check-limits.mjs examples/launch-kit

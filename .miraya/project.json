@@ -1,0 +1,20 @@
+{
+  "$schema": "https://miraya-web-el-mo-dev1.vercel.app/schema/project.json",
+  "slug": "launch-kit",
+  "title": {
+    "ar": "لانش كيت",
+    "en": "launch-kit",
+    "fr": "launch-kit"
+  },
+  "tagline": {
+    "ar": "مهارة مفتوحة المصدر لـ Claude Code تقرأ مستودعك وتُعِدّ حزمة إطلاق نزيهة: رسالة واضحة، وتحسينات لصفحة GitHub، ومسودات للمنصات، وخطة إطلاق في أربعة عشر يومًا.",
+    "en": "An open-source Claude Code skill that reads your repo and prepares an honest launch pack: positioning, GitHub polish, channel drafts and a 14-day plan.",
+    "fr": "Un skill Claude Code open source qui lit votre dépôt et prépare un kit de lancement honnête : positionnement, page GitHub soignée, brouillons par canal et plan sur 14 jours."
+  },
+  "category": "tooling",
+  "status": "beta",
+  "featured": false,
+  "cover": ".miraya/cover.png",
+  "stack": ["Claude Code", "Markdown", "Node.js"],
+  "open_source": true
+}

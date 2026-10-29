@@ -1,0 +1,17 @@
+{
+  "name": "launch-kit",
+  "description": "launch-kit by Miraya: a Claude Code skill that prepares the launch of an open-source repository.",
+  "owner": {
+    "name": "Miraya",
+    "url": "https://github.com/miraya-dev"
+  },
+  "plugins": [
+    {
+      "name": "launch-kit",
+      "source": "./",
+      "description": "Prepare the launch of any open-source repository: positioning, GitHub polish, channel drafts and a 14-day calendar.",
+      "category": "productivity",
+      "tags": ["launch", "open-source", "marketing", "github"]
+    }
+  ]
+}

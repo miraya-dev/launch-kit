@@ -1,0 +1,15 @@
+{
+  "name": "launch-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Claude Code skill that prepares the launch of an open-source repository.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": "https://github.com/miraya-dev/launch-kit",
+  "license": "MIT"
+}

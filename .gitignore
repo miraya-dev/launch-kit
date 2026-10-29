@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+# A launch pack generated while testing the skill on this repo; examples/ holds the published one.
+/launch/

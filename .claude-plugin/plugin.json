@@ -1,0 +1,13 @@
+{
+  "name": "launch-kit",
+  "version": "0.1.0",
+  "description": "Prepare the launch of any open-source repository: positioning, GitHub polish, ready-to-edit Show HN, Reddit, Product Hunt, X, LinkedIn and dev.to drafts, and a 14-day launch calendar. Honest launches only.",
+  "author": {
+    "name": "Moncef El hirech (Miraya)",
+    "url": "https://github.com/miraya-dev"
+  },
+  "homepage": "https://github.com/miraya-dev/launch-kit",
+  "repository": "https://github.com/miraya-dev/launch-kit",
+  "license": "MIT",
+  "keywords": ["launch", "open-source", "marketing", "show-hn", "product-hunt", "reddit", "github", "readme"]
+}
