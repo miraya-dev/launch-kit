@@ -31,12 +31,12 @@ If the user asks for something that breaks these rules, decline that part in one
 
 ## Workflow
 
-1. **Collect facts.** Create `launch/` in the target repo, then run:
+1. **Collect facts.** Run:
    ```bash
-   node "${CLAUDE_SKILL_DIR}/scripts/repo-facts.mjs" <repo> --format md > <repo>/launch/00-facts.md
+   node "${CLAUDE_SKILL_DIR}/scripts/repo-facts.mjs" <repo> --format md --out <repo>/launch/00-facts.md
    node "${CLAUDE_SKILL_DIR}/scripts/repo-facts.mjs" <repo>
    ```
-   The first writes the facts file of the pack; the second prints JSON for you to read. If Node.js is not available, collect the same facts by hand and say so at the top of `00-facts.md`.
+   The first creates `launch/` and writes the facts file of the pack (always UTF-8; don't use a `>` redirect); the second prints JSON for you to read. If Node.js is not available, collect the same facts by hand and say so at the top of `00-facts.md`.
 2. **Read the repo.** README, the manifest, the main entry points and a few core source files, `docs/`, `examples/`, CHANGELOG, LICENSE and CONTRIBUTING. If `gh` works, read open issues (`gh issue list --limit 20`; read-only). Note for yourself what it does, who it is for, how to install and run it, what is technically interesting, and what is missing. Keep the source of each fact.
 3. **Find honest alternatives.** Use the README, docs and what you know. If web search is available, confirm they still exist and are maintained. Be fair, including where an alternative is the better choice; when unsure of a detail, say so.
 4. **Write the pack.** For each file in the table below, read its reference, copy the template from `${CLAUDE_SKILL_DIR}/templates/` into `launch/`, fill it in and delete the `<!-- guidance -->` comments. Keep the headings and the fenced blocks marked `limit=` or `topics`: the checker reads them. Read `references/voice.md` before the first draft.

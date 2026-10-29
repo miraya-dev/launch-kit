@@ -120,7 +120,7 @@ The skill only writes inside `launch/`. When you're ready, ask: "Apply the READM
 The scripts also work on their own:
 
 ```bash
-node skills/launch-kit/scripts/repo-facts.mjs path/to/repo --format md
+node skills/launch-kit/scripts/repo-facts.mjs path/to/repo --format md --out path/to/repo/launch/00-facts.md
 node skills/launch-kit/scripts/check-limits.mjs path/to/repo/launch
 ```
 

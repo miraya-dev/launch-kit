@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // repo-facts.mjs: collect launch-relevant facts about a repository, deterministically.
 //
-//   node repo-facts.mjs [repo-dir] [--format json|md]
+//   node repo-facts.mjs [repo-dir] [--format json|md] [--out file]
 //
-// Zero dependencies. It only reads files: it never runs git, never touches the
-// network and never writes anything. The same repository always gives the same output.
+// Zero dependencies. It reads files only: it never runs git, never touches the network,
+// and writes nothing except the --out file (UTF-8, unlike PowerShell 5.1's `>` redirect).
+// The same repository always gives the same output.
 
-import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { join, basename, extname, resolve, isAbsolute } from 'node:path';
+import { readFileSync, readdirSync, statSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
+import { join, basename, extname, resolve, isAbsolute, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const MAX_FILES = 50000;
@@ -682,14 +683,17 @@ export function toMarkdown(f) {
 function main(argv) {
   const args = argv.slice(2);
   if (args.includes('--help') || args.includes('-h')) {
-    process.stdout.write('Usage: node repo-facts.mjs [repo-dir] [--format json|md]\n');
+    process.stdout.write('Usage: node repo-facts.mjs [repo-dir] [--format json|md] [--out file]\n');
     return 0;
   }
   let format = 'json';
+  let out = null;
   const dirs = [];
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--format') format = args[++i];
     else if (args[i].startsWith('--format=')) format = args[i].slice('--format='.length);
+    else if (args[i] === '--out') out = args[++i];
+    else if (args[i].startsWith('--out=')) out = args[i].slice('--out='.length);
     else if (args[i] === '--md') format = 'md';
     else if (args[i] === '--json') format = 'json';
     else dirs.push(args[i]);
@@ -705,7 +709,19 @@ function main(argv) {
     process.stderr.write(`repo-facts: ${err.message}\n`);
     return 1;
   }
-  process.stdout.write(format === 'md' ? toMarkdown(facts) : `${JSON.stringify(facts, null, 2)}\n`);
+  const text = format === 'md' ? toMarkdown(facts) : `${JSON.stringify(facts, null, 2)}\n`;
+  if (!out) {
+    process.stdout.write(text);
+    return 0;
+  }
+  try {
+    mkdirSync(dirname(resolve(out)), { recursive: true });
+    writeFileSync(out, text, 'utf8');
+  } catch (err) {
+    process.stderr.write(`repo-facts: cannot write ${out}: ${err.message}\n`);
+    return 1;
+  }
+  process.stdout.write(`Wrote ${out}\n`);
   return 0;
 }
 

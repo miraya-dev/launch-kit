@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -284,6 +284,16 @@ test('CLI prints JSON by default and markdown with --format md', () => {
     assert.match(md, /\| License \| MIT \(LICENSE\) \|/);
     assert.match(md, /- \[x\] CI/);
     assert.match(md, /- \[ \] CODE_OF_CONDUCT/);
+  });
+});
+
+test('CLI --out writes UTF-8 and creates the folder', () => {
+  withFixture(NODE_REPO, (root) => {
+    const out = join(root, 'launch', '00-facts.md');
+    const res = spawnSync(process.execPath, [SCRIPT, root, '--format', 'md', '--out', out], { encoding: 'utf8' });
+    assert.equal(res.status, 0, res.stderr);
+    assert.match(res.stdout, /^Wrote /);
+    assert.match(readFileSync(out, 'utf8'), /^# Repo facts: tiny-cli/);
   });
 });
 
