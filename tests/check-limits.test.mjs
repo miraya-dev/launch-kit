@@ -67,6 +67,14 @@ test('checkMarkdown finds limited blocks and labels them with the heading', () =
   );
 });
 
+test('checkMarkdown adds a bold line under the heading to the label', () => {
+  const md = ['## Thread', '', '**1/ Hook** (attach: demo.gif)', '', `${FENCE}text limit=280 x`, 'hi', FENCE, '## Next', `${FENCE}text limit=9`, 'x', FENCE].join('\n');
+  assert.deepEqual(
+    checkMarkdown(md).map((r) => r.label),
+    ['Thread › 1/ Hook', 'Next'],
+  );
+});
+
 test('checkMarkdown uses X weighting only when the block is marked x', () => {
   const link = 'https://example.com/' + 'p'.repeat(60);
   const md = `${FENCE}text limit=30 x\n${link}\n${FENCE}\n${FENCE}text limit=30\n${link}\n${FENCE}\n`;

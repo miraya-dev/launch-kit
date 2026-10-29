@@ -63,14 +63,22 @@ export function checkTopics(text) {
 }
 
 // Returns one entry per checked block: { line, label, kind, count, limit, ok, problems }.
+// The label is the nearest heading, plus a bold line under it ("**1/ Hook**") when there is one.
 export function checkMarkdown(markdown) {
   const lines = markdown.split(/\r?\n/);
   const results = [];
   let heading = '';
+  let bold = '';
   for (let i = 0; i < lines.length; i++) {
     const h = lines[i].match(/^#{1,6}\s+(.+?)\s*$/);
     if (h) {
       heading = h[1];
+      bold = '';
+      continue;
+    }
+    const b = lines[i].match(/^\*\*(.+?)\*\*/);
+    if (b) {
+      bold = b[1];
       continue;
     }
     const open = lines[i].match(/^(\s*)(```+|~~~+)\s*(\S*)(.*)$/);
@@ -83,14 +91,15 @@ export function checkMarkdown(markdown) {
     let j = i + 1;
     while (j < lines.length && !lines[j].trim().startsWith(open[2])) body.push(lines[j++]);
     const text = body.join('\n').replace(/\s+$/, '');
+    const label = [heading, bold].filter(Boolean).join(' › ');
     if (limit) {
       const max = Number(limit[1]);
       const counter = /(^|\s)x(\s|$)/.test(open[4]) ? 'x' : 'plain';
       const count = counter === 'x' ? xLength(text) : plainLength(text);
-      results.push({ line: i + 1, label: heading, kind: counter, count, limit: max, ok: count <= max, problems: [] });
+      results.push({ line: i + 1, label, kind: counter, count, limit: max, ok: count <= max, problems: [] });
     } else if (topics) {
       const { count, problems } = checkTopics(text);
-      results.push({ line: i + 1, label: heading, kind: 'topics', count, limit: 20, ok: problems.length === 0, problems });
+      results.push({ line: i + 1, label, kind: 'topics', count, limit: 20, ok: problems.length === 0, problems });
     }
     i = j;
   }

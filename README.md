@@ -43,7 +43,27 @@ or call the skill directly: `/launch-kit:launch-kit`. The pack appears in `launc
 | `09-calendar.md` | A 14-day launch calendar and a post-launch follow-up checklist |
 | `README.md` | The index: top 3 fixes before launch and the placeholders left to fill |
 
-**See a real pack:** [`examples/launch-kit/`](examples/launch-kit/) is the pack launch-kit wrote for its own launch.
+**See a real pack:** [`examples/launch-kit/`](examples/launch-kit/) is the pack launch-kit wrote for its own launch, unedited ([how it was made](examples/README.md)). Three excerpts:
+
+From [`02-github-polish.md`](examples/launch-kit/02-github-polish.md), the README checklist:
+
+| Item | Status | Concrete edit |
+| --- | --- | --- |
+| Demo GIF or screenshot in the first screen | partial | Line 11 shows `docs/social-preview.png`, a static card. Nothing shows the skill running. Record a 15 to 20 s GIF (type the prompt, files appear in `launch/`, `check-limits.mjs` prints "0 over the limit"), save it as `docs/demo.gif` and put it right under the badges. |
+
+From [`05-product-hunt.md`](examples/launch-kit/05-product-hunt.md), the tagline (51/60):
+
+```text
+Turn your repo into a launch pack you post yourself
+```
+
+From [`06-x-thread.md`](examples/launch-kit/06-x-thread.md), the first post (256/280, counted the way X counts):
+
+```text
+I built launch-kit, an open-source Claude Code skill that reads your repo and writes a launch pack: positioning, README fixes, drafts for Show HN, Reddit, Product Hunt, X, LinkedIn and dev.to, and a 14-day plan.
+
+You edit the drafts and post them yourself.
+```
 
 ## Why
 
